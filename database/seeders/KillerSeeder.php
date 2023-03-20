@@ -22,7 +22,7 @@ class KillerSeeder extends Seeder
             $killer->age = $faker->numberBetween(16, 90);
             $killer->kills = $faker->numberBetween(3, 50);
             $killer->wanted = $faker->boolean();
-            $killer->picture = $faker->imageUrl(640, 480);
+            $killer->picture = "https://picsum.photos/id/" . $faker->numberBetween(1, 50) . "/200";
 
             $killer->save();
         }

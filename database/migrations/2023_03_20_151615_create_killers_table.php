@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('age')->nullable();
             $table->integer('kills')->nullable();
             $table->boolean('wanted');
-            $table->url('picture');
+            $table->string('picture');
             $table->timestamps();
         });
     }
