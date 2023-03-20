@@ -21,7 +21,7 @@ Route::get('/', [GuestHomeController::class, 'index']);
 
 Route::middleware('auth')->name('admin.')->prefix('/admin')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
-    Route::resource('killers', [KillerController::class]);
+    Route::resource('killers', KillerController::class);
 });
 
 Route::middleware('auth')->group(function () {
