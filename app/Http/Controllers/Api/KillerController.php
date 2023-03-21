@@ -36,7 +36,10 @@ class KillerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $killer = Killer::find($id);
+        if (!$killer) return response(null, 404);
+
+        return response()->json($killer);
     }
 
     /**
