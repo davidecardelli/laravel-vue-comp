@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\Admin;
+
+use App\Models\Killer;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class KillerController extends Controller
 {
@@ -11,7 +14,8 @@ class KillerController extends Controller
      */
     public function index()
     {
-        //
+        $killers = Killer::all();
+        return view('admin.killers.index', compact('killers'));
     }
 
     /**

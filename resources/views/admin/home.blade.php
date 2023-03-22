@@ -3,6 +3,6 @@
 @section('content')
     <div class="container text-center">
         <h2>Pannello di controllo</h2>
-        <button class="btn btn-primary">Gestisci i Killer</button>
+        <a href="{{ route('admin.killers.index') }}" class="btn btn-primary">Gestisci i killers</a>
     </div>
 @endsection
