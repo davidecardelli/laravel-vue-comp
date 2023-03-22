@@ -8,9 +8,9 @@
                     @include('includes.card')
                 @endforeach
             </div>
-            {{-- <div class="text-center">
-                <a class="btn btn-primary" href="{{ route('admin.killers.create') }}">Inserisci un nuovo killer</a>
-            </div> --}}
+        </div>
+        <div class="text-center">
+            <a class="btn btn-primary" href="{{ route('admin.killers.create') }}">Inserisci un nuovo killer</a>
         </div>
     </main>
 @endsection

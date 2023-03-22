@@ -3,9 +3,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Arr;
 use App\Models\Killer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+
 
 class KillerController extends Controller
 {
@@ -23,7 +26,8 @@ class KillerController extends Controller
      */
     public function create()
     {
-        //
+        $killer = new Killer();
+        return view('admin.killers.create', compact('killer'));
     }
 
     /**
@@ -31,7 +35,23 @@ class KillerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $killer = new Killer();
+
+        if (array_key_exists('picture', $data)) {
+            $img_url = Storage::put('killers', $data['picture']);
+            $data['picture'] = $img_url;
+        }
+
+        // if (Arr::exists($data, 'picture')) {
+        //     $extension = $data['picture']->extension();
+        //     $img_url = Storage::putFileAs('killers', $data['picture']);
+        //     $data['picture'] = $img_url;
+        // }
+
+        $killer->fill($data);
+        $killer->save();
+        return to_route('admin.killers.show', $killer->id);
     }
 
     /**
