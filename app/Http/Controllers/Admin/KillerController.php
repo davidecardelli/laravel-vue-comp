@@ -65,24 +65,35 @@ class KillerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Killer $killer)
     {
-        //
+        return view('admin.killers.edit', compact('killer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Killer $killer)
     {
-        //
+        $data = $request->all();
+
+        if (array_key_exists('picture', $data)) {
+            $img_url = Storage::put('killers', $data['picture']);
+            $data['picture'] = $img_url;
+        }
+
+        $killer->fill($data);
+        $killer->update($data);
+        return to_route('admin.killers.show', $killer->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Killer $killer)
     {
-        //
+        if ($killer->picture) Storage::delete($killer->picture);
+        $killer->delete();
+        return to_route('admin.killers.index');
     }
 }

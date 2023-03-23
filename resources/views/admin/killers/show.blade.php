@@ -5,10 +5,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-4">
-                    <img class="img-fluid" src="{{ $killer['picture'] }}" alt="{{ $killer['first_name'] }}">
+                    <img class="img-fluid" src="{{ asset('storage/' . $killer['picture']) }}"
+                        alt="{{ $killer['first_name'] }}">
                 </div>
                 <div class="col-8">
-                    <h1>{{ $killer['first_name'] . $killer['last_name'] }}</h1>
+                    <h1>{{ $killer['first_name'] . ' ' . $killer['last_name'] }}</h1>
                     <div>
                         Age: {{ $killer['age'] }}
                     </div>

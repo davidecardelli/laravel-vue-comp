@@ -5,7 +5,8 @@
                 alt="{{ $killer['first_name'] }}">
         </a>
         <div class="card-body">
-            <p class="text-center text-black mt-2 fw-bold text-uppercase">{{ $killer['first_name'] }}</p>
+            <p class="text-center text-black mt-2 fw-bold text-uppercase">
+                {{ $killer['first_name'] . ' ' . $killer['last_name'] }}</p>
         </div>
     </div>
 </div>
