@@ -27,6 +27,8 @@
         </header>
 
         {{-- Main --}}
+
+        @include('includes.alert')
         <main>
             @yield('content')
         </main>

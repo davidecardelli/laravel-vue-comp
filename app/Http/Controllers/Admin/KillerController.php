@@ -35,6 +35,16 @@ class KillerController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'age' => 'nullable|numeric',
+            'kills' => 'nullable|numeric',
+            'wanted' => 'boolean',
+            'picture' => 'image',
+        ]);
+
         $data = $request->all();
         $killer = new Killer();
 
@@ -51,7 +61,9 @@ class KillerController extends Controller
 
         $killer->fill($data);
         $killer->save();
-        return to_route('admin.killers.show', $killer->id);
+        return to_route('admin.killers.show', $killer->id)
+            ->with('message', "$killer->first_name $killer->second_name killer has been successfully created")
+            ->with('type', 'success');
     }
 
     /**
@@ -75,6 +87,15 @@ class KillerController extends Controller
      */
     public function update(Request $request, Killer $killer)
     {
+        $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'age' => 'nullable|numeric',
+            'kills' => 'nullable|numeric',
+            'wanted' => 'boolean',
+            'picture' => 'image',
+        ]);
+
         $data = $request->all();
 
         if (array_key_exists('picture', $data)) {
@@ -84,7 +105,9 @@ class KillerController extends Controller
 
         $killer->fill($data);
         $killer->update($data);
-        return to_route('admin.killers.show', $killer->id);
+        return to_route('admin.killers.show', $killer->id)
+            ->with('message', "$killer->first_name $killer->second_name killer has been successfully modified")
+            ->with('type', 'success');
     }
 
     /**
@@ -94,6 +117,8 @@ class KillerController extends Controller
     {
         if ($killer->picture) Storage::delete($killer->picture);
         $killer->delete();
-        return to_route('admin.killers.index');
+        return to_route('admin.killers.index')
+            ->with('message', "$killer->first_name $killer->second_name killer has been successfully deleted")
+            ->with('type', 'success');
     }
 }
