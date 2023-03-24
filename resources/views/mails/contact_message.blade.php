@@ -1,12 +1,10 @@
 <x-mail::message>
-# Introduction
+    # Nuovo messaggio ricevuto!
 
-The body of your message.
+    ## Messaggio:
+    <p>{{ $message }}</p>
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
 
-Thanks,<br>
-{{ config('app.name') }}
+    Thanks,<br>
+    {{ config('app.name') }}
 </x-mail::message>

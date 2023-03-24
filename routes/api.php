@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('killers', KillerController::class);
+
+Route::post('/contact_message', [ContactController::class], 'send');
