@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\KillerController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('killers', KillerController::class);
 
-Route::post('/contact_message', [ContactController::class], 'send');
+Route::post('/contact_message', [ContactController::class, 'send']);
