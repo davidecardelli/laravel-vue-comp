@@ -1,10 +1,10 @@
 <x-mail::message>
-    # Nuovo messaggio ricevuto!
-
-    ## Messaggio:
+    <h1>Nuovo messaggio ricevuto!</h1>
+    <h2>Messaggio:</h2>
     <p>{{ $message }}</p>
+    <p>Thanks,</p>
 
 
-    Thanks,<br>
     {{ config('app.name') }}
+
 </x-mail::message>
